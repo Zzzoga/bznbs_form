@@ -234,6 +234,10 @@
                     <p class="error">Заполните поле!</p>
                     <input type="text" name="country" id="country" placeholder="Страна" class="form__input">
                 </div>
+                <div class="row">
+                    <p class="error">Заполните поле!</p>
+                    <input type="text" name="format" id="format" placeholder="Формат: онлайн/офлайн" class="form__input">
+                </div>
                 <input type="submit" value="Отправить" class="form__submit">
             </form>
 
@@ -304,6 +308,7 @@
                             document.querySelector('input[name="phone"]').placeholder = 'Phone number'
                             document.querySelector('input[name="status"]').placeholder = 'Position'
                             document.querySelector('input[name="country"]').placeholder = 'Country'
+                            document.querySelector('input[name="format"]').placeholder = 'Format: online/offline'
                             document.querySelector('.form__submit').value = 'Send'
                             document.querySelector('h3.sended__title').innerHTML = 'Success!'
                             break
@@ -317,6 +322,7 @@
                             document.querySelector('input[name="phone"]').placeholder = 'Телефон'
                             document.querySelector('input[name="status"]').placeholder = 'Должность'
                             document.querySelector('input[name="country"]').placeholder = 'Страна'
+                            document.querySelector('input[name="format"]').placeholder = 'Формат: онлайн/офлайн'
                             document.querySelector('.form__submit').value = 'Отправить'
                             document.querySelector('h3.sended__title').innerHTML = 'Успешно!'
                             break
