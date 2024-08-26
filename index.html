@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контактная форма</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Raleway", sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.35;
+            background: #fff;
+            color: #042325;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 500;
+        }
+
+        section.form__wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .section__wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            max-width: 500px;
+            width: 100%;
+            padding: 40px;
+            background: #e7e7e7;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        p {
+            margin: 5px 0 25px 0;
+            max-width: 80%;
+        }
+
+        form#form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: 10px;
+        }
+
+        .form__input {
+            border: 1px solid transparent;
+            font-family: 'Raleway', sans-serif;
+            font-size: 1rem;
+            padding: 20px 25px;
+            border-radius: 10px;
+            transition: all .5s ease;
+            outline: 0;
+        }
+
+        .form__input:hover, .form__input:focus {
+            border-color: #333333;
+        }
+
+        .form__submit {
+            border: none;
+            padding: 20px;
+            font-family: 'Raleway', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 500;
+            background: #3b3b3b;
+            border-radius: 10px;
+            color: #fff;
+            transition: all .5s ease;
+            cursor: pointer;
+        }
+
+        .form__submit:hover {
+            background: #000000;
+        }
+
+        .row {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        p.error {
+            margin: 0;
+            color: #cf1010;
+            display: none;
+        }
+        p.error.visible {
+            display: block;
+        }
+
+        .form__input.error {
+            border-color: #cf1010;
+        }
+
+        .sended {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+            top: 0;
+            left: 0;
+            text-align: center;
+            background: #e7e7e7;
+            padding: 40px;
+        }
+
+        h3.sended__title {
+            font-size: 24px;
+            font-weight: 500;
+        }
+
+        .sended.active {
+            display: flex;
+        }
+
+        .lang {
+            display: flex;
+            gap: 10px;
+            background: #e7e7e7;
+            padding: 5px;
+            border-radius: 50px;
+        }
+
+        .lang__item {
+            display: flex;
+            width: 50px;
+            height: 30px;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+            border-radius: 50px;
+            transition: all .5s ease;
+            cursor: pointer;
+        }
+
+        .lang__item.active {
+            background: #3b3b3b;
+            color: #fff;
+        }
+
+        .lang__item:hover {
+            background: #cdcdcd;
+        }
+
+        .lang__item.active:hover {
+            background: #3b3b3b;
+        }
+
+        @media screen and (max-width: 600px) {
+            .section__wrapper {
+                padding: 20px;
+                margin: 0 10px;
+            }
+
+            h1.title {
+                font-size: 1.8rem;
+            }
+
+            body {
+                font-size: 14px;
+            }
+
+            .form__input {
+                padding: 15px 20px;
+                font-size: 14px;
+            }
+
+            .form__submit {
+                padding: 15px;
+                font-size: 16px;
+            }
+        }
+    </style>
+
+    <section class="form__wrapper">
+        <div class="lang">
+            <div class="ru lang__item active" data-lang="ru">Ru</div>
+            <div class="en lang__item" data-lang="en">En</div>
+        </div>
+        <div class="section__wrapper">
+            <h1 class="title">Регистрация</h1>
+            <p>Заполните форму ниже для регистрации</p>
+            <form action="#" method="post" id="form">
+                <div class="row">
+                    <p class="error">Заполните поле!</p>
+                    <input type="text" name="name" id="name" placeholder="Фамилия, имя, отчество участника" class="form__input">
+                </div>
+                <div class="row">
+                    <p class="error">Заполните поле!</p>
+                    <input type="text" name="company" id="company" placeholder="Название организации" class="form__input">
+                </div>
+                <div class="row">
+                    <p class="error">Заполните поле!</p>
+                    <input type="email" name="email" id="email" placeholder="Email" class="form__input">
+                </div>
+                <div class="row">
+                    <p class="error">Заполните поле!</p>
+                    <input type="tel" name="phone" id="phone" placeholder="Телефон" class="form__input">
+                </div>
+                <div class="row">
+                    <p class="error">Заполните поле!</p>
+                    <input type="text" name="status" id="status" placeholder="Должность" class="form__input">
+                </div>
+                <div class="row">
+                    <p class="error">Заполните поле!</p>
+                    <input type="text" name="country" id="country" placeholder="Страна" class="form__input">
+                </div>
+                <input type="submit" value="Отправить" class="form__submit">
+            </form>
+
+            <div class="sended">
+                <h3 class="sended__title">Успешно!</h3>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Phone mask
+        function maskPhone(selector, masked = '+7 (___) ___-__-__') {
+            const elems = document.querySelectorAll(selector);
+        
+            function mask(event) {
+                const keyCode = event.keyCode;
+                const template = masked,
+                    def = template.replace(/\D/g, ""),
+                    val = this.value.replace(/\D/g, "");
+                console.log(template);
+                let i = 0,
+                    newValue = template.replace(/[_\d]/g, function (a) {
+                        return i < val.length ? val.charAt(i++) || def.charAt(i) : a;
+                    });
+                i = newValue.indexOf("_");
+                if (i !== -1) {
+                    newValue = newValue.slice(0, i);
+                }
+                let reg = template.substr(0, this.value.length).replace(/_+/g,
+                    function (a) {
+                        return "\\d{1," + a.length + "}";
+                    }).replace(/[+()]/g, "\\$&");
+                reg = new RegExp("^" + reg + "$");
+                if (!reg.test(this.value) || this.value.length < 5 || keyCode > 47 && keyCode < 58) {
+                    this.value = newValue;
+                }
+                if (event.type === "blur" && this.value.length < 5) {
+                    this.value = "";
+                }
+        
+            }
+        
+            for (const elem of elems) {
+                elem.addEventListener("input", mask);
+                elem.addEventListener("focus", mask);
+                elem.addEventListener("blur", mask);
+            }
+            
+        }
+            
+        maskPhone('input[type="tel"]')
+
+        // Language checkbox 
+        document.querySelectorAll('.lang__item').forEach(btn => {
+            btn.addEventListener('click', e => {
+                e.preventDefault()
+                if (!e.target.closest('.lang__item').classList.contains('active')) {
+                    document.querySelectorAll('.lang__item').forEach(btn => { btn.classList.remove('active')})
+                    e.target.closest('.lang__item').classList.add('active')
+                    switch (e.target.closest('.lang__item').dataset.lang) {
+                        case 'en':
+                            document.querySelector('h1').innerHTML = 'Registration'
+                            document.querySelector('.section__wrapper p').innerHTML = 'Fill out the form below to register'
+                            document.querySelectorAll('.row p').forEach(p => { p.innerHTML = 'Fill in the blank!'})
+                            document.querySelector('input[name="name"]').placeholder = 'Surname, first name, patronymic of the participant'
+                            document.querySelector('input[name="company"]').placeholder = 'Company name'
+                            document.querySelector('input[name="email"]').placeholder = 'Email'
+                            document.querySelector('input[name="phone"]').placeholder = 'Phone number'
+                            document.querySelector('input[name="status"]').placeholder = 'Position'
+                            document.querySelector('input[name="country"]').placeholder = 'Country'
+                            document.querySelector('.form__submit').value = 'Send'
+                            document.querySelector('h3.sended__title').innerHTML = 'Success!'
+                            break
+                        case 'ru':
+                            document.querySelector('h1').innerHTML = 'Регистрация'
+                            document.querySelector('.section__wrapper p').innerHTML = 'Заполните форму ниже для регистрации'
+                            document.querySelectorAll('.row p').forEach(p => { p.innerHTML = 'Заполните поле!'})
+                            document.querySelector('input[name="name"]').placeholder = 'Фамилия, имя, отчество участника'
+                            document.querySelector('input[name="company"]').placeholder = 'Название организации'
+                            document.querySelector('input[name="email"]').placeholder = 'Email'
+                            document.querySelector('input[name="phone"]').placeholder = 'Телефон'
+                            document.querySelector('input[name="status"]').placeholder = 'Должность'
+                            document.querySelector('input[name="country"]').placeholder = 'Страна'
+                            document.querySelector('.form__submit').value = 'Отправить'
+                            document.querySelector('h3.sended__title').innerHTML = 'Успешно!'
+                            break
+                    }
+                }
+            })
+        })
+
+        // Form event
+        document.querySelector('form').addEventListener('submit', e => {
+            e.preventDefault()
+            let statusCount = 0
+            document.querySelectorAll('.form__input').forEach(input => {
+                if (input.value == '') {
+                    input.classList.add('error')
+                    input.closest('.row').querySelector('p').classList.add('visible')
+                    statusCount--
+                } else {
+                    input.classList.remove('error')
+                    input.closest('.row').querySelector('p').classList.remove('visible')
+                    statusCount++
+                }
+            })
+
+            if (statusCount == 6) {
+                setTimeout(() => {
+                    e.target.closest('.section__wrapper').querySelector('.sended').classList.add('active')
+                }, 1000)
+            }
+            
+        })
+    </script>
+
+</body>
+</html>
